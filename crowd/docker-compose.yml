@@ -1,0 +1,17 @@
+crowd:
+  build: .
+  ports:
+    - "8095:8095"
+  volumes:
+    - /opt/atlassian/application-data/crowd-home:/opt/atlassian/application-data/crowd-home
+  links:
+    - database
+
+database:
+  image: postgres:9.4
+  environment:
+    - POSTGRES_DB=yourdb
+    - POSTGRES_USER=yourdbuser
+    - POSTGRES_PASSWORD=yourpass
+  volumes:
+    - ./data:/var/lib/postgresql/data
