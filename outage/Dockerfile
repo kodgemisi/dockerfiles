@@ -18,7 +18,7 @@ RUN apt-get install python -y
 
 RUN git clone git://github.com/n1k0/casperjs.git
 RUN cd casperjs
-RUN ln -sf `pwd`/bin/casperjs /usr/local/bin/casperjs
+RUN ln -sf /casperjs/bin/casperjs /usr/local/bin/casperjs
 
 #install phantomjs
 
@@ -34,10 +34,12 @@ RUN ln -sf /usr/local/src/phantomjs/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /
 RUN which phantomjs
 
 #download water outage notifier from github
-
+RUN cd /
+WORKDIR /
 RUN git clone https://github.com/kodgemisi/waterOutageNotifier
 
 #run the script
 
 WORKDIR waterOutageNotifier
-CMD ["/casperjs/bin/casperjs", "checkForOutage.js"]
+
+ENTRYPOINT ["/waterOutageNotifier/run.sh"]
