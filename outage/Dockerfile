@@ -38,8 +38,15 @@ RUN cd /
 WORKDIR /
 RUN git clone https://github.com/kodgemisi/waterOutageNotifier
 
-#run the script
+#install cron
+
+RUN apt-get -y install rsyslog curl
+ADD files/bin/start-cron.sh /usr/bin/start-cron.sh
+ADD files/etc/crontab /etc/crontab
+RUN chmod +x /usr/bin/start-cron.sh
+RUN chmod 600 /etc/crontab
+RUN touch /var/log/cron.log
 
 WORKDIR waterOutageNotifier
 
-ENTRYPOINT ["/waterOutageNotifier/run.sh"]
+CMD /usr/bin/start-cron.sh

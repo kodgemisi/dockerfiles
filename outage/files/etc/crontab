@@ -1,0 +1,1 @@
+* * * * * root PATH=$PATH:/usr/local/bin/ /waterOutageNotifier/run.sh ROOM_ID AUTH_TOKEN >> /waterOutageNotifier/cron.log 2>&1
