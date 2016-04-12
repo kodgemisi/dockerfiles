@@ -1,0 +1,21 @@
+jira:
+  build: .
+  ports:
+    - "8080:8080"
+  volumes:
+    - /var/atlassian/application-data/jira:/var/atlassian/application-data/jira
+  links:
+    - database
+
+database:
+  image: postgres:9.4
+  environment:
+    - POSTGRES_DB=yourdb
+    - POSTGRES_USER=yourdbuser
+    - POSTGRES_PASSWORD=yourpw
+  volumes:
+    - ./data:/var/lib/postgresql/data  
+
+    Status API Training Shop Blog About 
+
+
