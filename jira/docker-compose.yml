@@ -16,6 +16,4 @@ database:
   volumes:
     - ./data:/var/lib/postgresql/data  
 
-    Status API Training Shop Blog About 
-
 
