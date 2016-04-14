@@ -47,6 +47,11 @@ RUN chmod +x /usr/bin/start-cron.sh
 RUN chmod 600 /etc/crontab
 RUN touch /var/log/cron.log
 
+#turkish character
+
+RUN locale-gen tr_TR.UTF-8
+RUN export LANG=tr_TR.UTF-8
+
 WORKDIR waterOutageNotifier
 
 CMD /usr/bin/start-cron.sh
