@@ -16,17 +16,17 @@ RUN apt-get -y install oracle-java8-installer && apt-get clean
 
 # Install JIRA
 
-run apt-get install -q -y curl
-run curl -Lks https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.1.4-jira-7.1.4.tar.gz -o /root/jira.tar.gz
-run /usr/sbin/useradd --create-home --home-dir /usr/local/jira --shell /bin/bash jira
-run mkdir -p /opt/jira
-run tar zxf /root/jira.tar.gz --strip=1 -C /opt/jira
-run mkdir -p /opt/jira-home
-run echo "jira.home = /opt/jira-home" > /opt/jira/atlassian-jira/WEB-INF/classes/jira-application.properties
+RUN apt-get install -q -y curl
+RUN curl -Lks https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.1.4-jira-7.1.4.tar.gz -o /root/jira.tar.gz
+RUN /usr/sbin/useradd --create-home --home-dir /usr/local/jira --shell /bin/bash jira
+RUN mkdir -p /opt/jira
+RUN tar zxf /root/jira.tar.gz --strip=1 -C /opt/jira
+RUN mkdir -p /opt/jira-home
+RUN echo "jira.home = /opt/jira-home" > /opt/jira/atlassian-jira/WEB-INF/classes/jira-application.properties
 
 # Launching Jira
 
-workdir /opt/jira-home
-run rm -f /opt/jira-home/.jira-home.lock
-expose 8080:8080
-cmd ["/opt/jira/bin/start-jira.sh", "-fg"]
+WORKDIR /opt/jira-home
+RUN rm -f /opt/jira-home/.jira-home.lock
+EXPOSE 8080:8080
+CMD ["/opt/jira/bin/start-jira.sh", "-fg"]
