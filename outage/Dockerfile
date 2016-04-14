@@ -50,7 +50,9 @@ RUN touch /var/log/cron.log
 #turkish character
 
 RUN locale-gen tr_TR.UTF-8
-RUN export LANG=tr_TR.UTF-8
+ENV LANG tr_TR.UTF-8  
+ENV LANGUAGE tr_TR:tr  
+ENV LC_ALL tr_TR.UTF-8
 
 WORKDIR waterOutageNotifier
 
