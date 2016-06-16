@@ -5,6 +5,6 @@ change all below;
     MYSQL_USER: user name
     MYSQL_PASSWORD: "password"
     
-in docker-compose.yml
-   Dockerfile
+in docker-compose.yml, 
+   Dockerfile, 
    wp-config.php
