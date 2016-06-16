@@ -1,0 +1,20 @@
+wordpress:
+  build: .
+  tty: true
+  links:
+    - database
+  ports:
+    - "80:80"
+
+database:
+  image: mysql
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./database:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: example
+    MYSQL_DATABASE: database name
+    MYSQL_USER: user name
+    MYSQL_PASSWORD: "password"
+
